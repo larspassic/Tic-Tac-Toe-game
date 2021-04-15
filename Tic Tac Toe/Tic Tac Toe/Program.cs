@@ -2,7 +2,7 @@
 
 namespace Tic_Tac_Toe
 {
-    class Program
+    public class Program
     {
         //Variables
         string slot1 = "";
@@ -14,19 +14,23 @@ namespace Tic_Tac_Toe
         string slot7 = "";
         string slot8 = "";
         string slot9 = "";
+        private bool timeToExit;
+        string currentPlayer = "X";
 
-        public void Main()
+        public static void Main(string[] args)
         {
             //Welcome
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
 
-            string currentPlayer = "X";
 
-            //Main game loop
-            while (true)
+        }
+
+        public void GameLoop()
+        {
+            //Check to see if the game is over
+            while (timeToExit = false)
             {
-                
-
+                //Main game loop
 
                 //Display the board to the user
                 DisplayBoard();
@@ -40,7 +44,7 @@ namespace Tic_Tac_Toe
                 userInputInt = int.Parse(userInputString);
 
                 //Add the character of the player to the slot
-                
+
                 switch (userInputInt)
                 {
                     case 1:
@@ -70,7 +74,7 @@ namespace Tic_Tac_Toe
                     case 9:
                         slot9 = currentPlayer;
                         break;
-                    
+
                     default:
                         break;
                 }
