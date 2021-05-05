@@ -90,6 +90,10 @@ namespace Tic_Tac_Toe
                         break;
                 }
 
+                //Need to start checking to see if a player has won yet
+                //If the three in a row patterns make "OOO" or "XXX" then that player has won
+                //Announce the winner, set timetoexit to true, and end the game
+
 
                 //End of the game loop, switch turns
                 if (currentPlayer == "X")
