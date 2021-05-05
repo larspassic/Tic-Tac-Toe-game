@@ -23,11 +23,11 @@ namespace Tic_Tac_Toe
             void DisplayBoard()
             {
                 Console.WriteLine("");
-                Console.WriteLine($"{slot1} | {slot2} | {slot3}");
-                Console.WriteLine($"----------");
-                Console.WriteLine($"{slot4} | {slot5} | {slot6}");
-                Console.WriteLine($"----------");
-                Console.WriteLine($"{slot7} | {slot8} | {slot9}");
+                Console.WriteLine($" {slot1} | {slot2} | {slot3}");
+                Console.WriteLine($"-----------");
+                Console.WriteLine($" {slot4} | {slot5} | {slot6}");
+                Console.WriteLine($"-----------");
+                Console.WriteLine($" {slot7} | {slot8} | {slot9}");
                 Console.WriteLine("");
             }
 
@@ -44,7 +44,7 @@ namespace Tic_Tac_Toe
                 DisplayBoard();
 
                 //Ask the user to choose a number
-                Console.WriteLine($"Player {currentPlayer}, please type a number to make your move: (1-9)");
+                Console.Write($"Player {currentPlayer}, please type a number to make your move (1-9): ");
 
                 //Receive the input from the user
                 int userInputInt = 0;
