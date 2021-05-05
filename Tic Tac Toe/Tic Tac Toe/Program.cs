@@ -4,31 +4,39 @@ namespace Tic_Tac_Toe
 {
     public class Program
     {
-        //Variables
-        string slot1 = "";
-        string slot2 = "";
-        string slot3 = "";
-        string slot4 = "";
-        string slot5 = "";
-        string slot6 = "";
-        string slot7 = "";
-        string slot8 = "";
-        string slot9 = "";
-        private bool timeToExit;
-        string currentPlayer = "X";
 
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
+            //Variables
+            string slot1 = "1";
+            string slot2 = "2";
+            string slot3 = "3";
+            string slot4 = "4";
+            string slot5 = "5";
+            string slot6 = "6";
+            string slot7 = "7";
+            string slot8 = "8";
+            string slot9 = "9";
+            bool timeToExit = false;
+            string currentPlayer = "X";
+
+            void DisplayBoard()
+            {
+                Console.WriteLine("");
+                Console.WriteLine($"{slot1} | {slot2} | {slot3}");
+                Console.WriteLine($"----------");
+                Console.WriteLine($"{slot4} | {slot5} | {slot6}");
+                Console.WriteLine($"----------");
+                Console.WriteLine($"{slot7} | {slot8} | {slot9}");
+                Console.WriteLine("");
+            }
+
             //Welcome
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
 
 
-        }
-
-        public void GameLoop()
-        {
             //Check to see if the game is over
-            while (timeToExit = false)
+            while (timeToExit == false)
             {
                 //Main game loop
 
@@ -89,15 +97,8 @@ namespace Tic_Tac_Toe
                     currentPlayer = "X";
                 }
             }
+
         }
 
-        private void DisplayBoard()
-        {
-            Console.WriteLine($"{slot1} | {slot2} | {slot3}");
-            Console.WriteLine($"---------------------------");
-            Console.WriteLine($"{slot4} | {slot5} | {slot6}");
-            Console.WriteLine($"---------------------------");
-            Console.WriteLine($"{slot7} | {slot8} | {slot9}");
-        }
     }
 }
