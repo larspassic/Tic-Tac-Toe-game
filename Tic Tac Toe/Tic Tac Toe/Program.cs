@@ -51,8 +51,11 @@ namespace Tic_Tac_Toe
                 string userInputString = Console.ReadLine();
                 userInputInt = int.Parse(userInputString);
 
-                //Add the character of the player to the slot
+                //Need to build logic to protect the slot
+                //If the slot is X or O then need to ask for input again
 
+
+                //Actually place the X or O in to the game board
                 switch (userInputInt)
                 {
                     case 1:
@@ -86,6 +89,7 @@ namespace Tic_Tac_Toe
                     default:
                         break;
                 }
+
 
                 //End of the game loop, switch turns
                 if (currentPlayer == "X")
