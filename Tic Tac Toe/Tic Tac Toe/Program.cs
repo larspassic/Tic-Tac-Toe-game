@@ -21,9 +21,10 @@ namespace Tic_Tac_Toe
             string currentPlayer = "X";
 
             
-
+            //Method to display the current game board out to the console
             void DisplayBoard()
             {
+                Console.Clear();
                 Console.WriteLine("");
                 Console.WriteLine($" {slot1} | {slot2} | {slot3}");
                 Console.WriteLine($"-----------");
@@ -33,7 +34,7 @@ namespace Tic_Tac_Toe
                 Console.WriteLine("");
             }
 
-            //Welcome
+            //Welcome the players
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
 
             //Main game loop
@@ -51,8 +52,9 @@ namespace Tic_Tac_Toe
                 string userInputString = Console.ReadLine();
                 userInputInt = int.Parse(userInputString);
 
-                //Need to build logic to protect the slot and clarify user input.
+                //Need to build logic to protect the slot and clarify user input
                 //If the slot is X or O then need to ask for input again
+                //If the slot is not X or O, then proceed to the switch statement to actually make the move
                 
 
                 //This switch statement will actually place the X or O in to the game board slot by stamping the current player
@@ -90,15 +92,18 @@ namespace Tic_Tac_Toe
                         break;
                 }
 
-                //Need to start checking to see if a player has won yet
                 //If the three in a row patterns make "OOO" or "XXX" then that player has won
                 //Announce the winner, set timetoexit to true, and end the game
                 
-                //If CheckForWinner returns true - display the board and announce the winner.
+                //If CheckForWinner returns true - that means a winner was found
+                //Display the board and announce the winner
                 if (CheckForWinner(slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9))
                 {
                     //Break out of the game loop
                     timeToExit = true;
+
+                    //Clear the console
+                    Console.Clear();
 
                     //Show the board one last time
                     DisplayBoard();
@@ -129,7 +134,7 @@ namespace Tic_Tac_Toe
 
         }
 
-        //Method to check for a winner.
+        //Method to check for a winner
         private static bool CheckForWinner(string slot1, string slot2, string slot3, string slot4, string slot5, string slot6, string slot7, string slot8, string slot9)
         {
             //Refresh the different victory patterns - these need to be refreshed prior to checking for a winner
