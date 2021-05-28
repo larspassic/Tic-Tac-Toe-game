@@ -62,7 +62,7 @@ namespace Tic_Tac_Toe
                 //Receive the input from the user
                 int userInputInt = 0;
                 string userInputString = "";
-                userInputString = Console.ReadLine();
+                userInputString = Console.ReadLine(); //Why is this not asking for input after a continue?!
                 
                 //Need to protect this for string inputs
                 userInputInt = int.Parse(userInputString);
@@ -203,7 +203,7 @@ namespace Tic_Tac_Toe
                 {
                     Console.WriteLine($"Slot already played error was found. Press enter to try again.");
                     Console.Read();
-                    break;
+                    continue;
                 }
 
                 //If the three in a row patterns make "OOO" or "XXX" then that player has won
@@ -244,6 +244,7 @@ namespace Tic_Tac_Toe
             }
 
             //End the game by closing the console window
+            Console.WriteLine($"Game is finished!");
             Environment.Exit(0);
 
         }
@@ -278,5 +279,7 @@ namespace Tic_Tac_Toe
                 return false;
             }
         }
+
+        
     }
 }
