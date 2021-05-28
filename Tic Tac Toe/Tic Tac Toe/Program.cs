@@ -7,7 +7,7 @@ namespace Tic_Tac_Toe
 
         static void Main(string[] args)
         {
-            //Variables for game board slots
+            //Variables for game board slots and current player
             string slot1 = "1";
             string slot2 = "2";
             string slot3 = "3";
@@ -20,6 +20,17 @@ namespace Tic_Tac_Toe
             bool timeToExit = false;
             string currentPlayer = "X";
 
+            //Create a container array to hold the strings
+            string[] slots = new string[9];
+            slots[0] = slot1;
+            slots[1] = slot2;
+            slots[2] = slot3;
+            slots[3] = slot4;
+            slots[4] = slot5;
+            slots[5] = slot6;
+            slots[6] = slot7;
+            slots[7] = slot8;
+            slots[8] = slot9;
             
             //Method to display the current game board out to the console
             void DisplayBoard()
@@ -41,6 +52,7 @@ namespace Tic_Tac_Toe
             //Check to see if the game is over
             while (timeToExit == false)
             {
+                
                 //Display the board to the user
                 DisplayBoard();
 
@@ -49,52 +61,154 @@ namespace Tic_Tac_Toe
 
                 //Receive the input from the user
                 int userInputInt = 0;
-                string userInputString = Console.ReadLine();
+                string userInputString = "";
+                userInputString = Console.ReadLine();
+                
+                //Need to protect this for string inputs
                 userInputInt = int.Parse(userInputString);
+                
+                bool errorFound = false;
 
                 //Need to build logic to protect the slot and clarify user input
-                //If the slot is X or O then need to ask for input again
+                //If user input is less than one or more than 9, it's invalid
+                //If the slot already contains X or O then need to ask for input again
                 //If the slot is not X or O, then proceed to the switch statement to actually make the move
                 
+                if (userInputInt < 1 || userInputInt > 9)
+                {
+                    Console.WriteLine($"Invalid input. Please type a number that represents a game board slot (1-9)");
+                    Console.WriteLine($"Input error was found. Press enter to try again.");
+                    Console.Read();
+                    continue; //Break out of the while loop directly, start a new loop
+                }
 
                 //This switch statement will actually place the X or O in to the game board slot by stamping the current player
                 switch (userInputInt)
                 {
                     case 1:
-                        slot1 = currentPlayer;
-                        break;
+                        if (slot1 == "X" || slot1 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot1 = currentPlayer;
+                            break;
+                        }
+                        
                     case 2:
-                        slot2 = currentPlayer;
-                        break;
+                        if (slot2 == "X" || slot2 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot2 = currentPlayer;
+                            break;
+                        }
                     case 3:
-                        slot3 = currentPlayer;
-                        break;
+                        if (slot3 == "X" || slot3 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot3 = currentPlayer;
+                            break;
+                        }
                     case 4:
-                        slot4 = currentPlayer;
-                        break;
+                        if (slot4 == "X" || slot4 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot4 = currentPlayer;
+                            break;
+                        }
                     case 5:
-                        slot5 = currentPlayer;
-                        break;
+                        if (slot5 == "X" || slot5 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot5 = currentPlayer;
+                            break;
+                        }
                     case 6:
-                        slot6 = currentPlayer;
-                        break;
+                        if (slot6 == "X" || slot6 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot6 = currentPlayer;
+                            break;
+                        }
                     case 7:
-                        slot7 = currentPlayer;
-                        break;
+                        if (slot7 == "X" || slot7 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot7 = currentPlayer;
+                            break;
+                        }
                     case 8:
-                        slot8 = currentPlayer;
-                        break;
+                        if (slot8 == "X" || slot8 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot8 = currentPlayer;
+                            break;
+                        }
                     case 9:
-                        slot9 = currentPlayer;
-                        break;
+                        if (slot9 == "X" || slot9 == "O") //If the slot already has X or O in it, that's an error
+                        {
+                            Console.WriteLine($"Someone has already played in that space.");
+                            errorFound = true;
+                            break;
+                        }
+                        else
+                        {
+                            slot9 = currentPlayer;
+                            break;
+                        }
 
                     default:
                         break;
                 }
 
+                if (errorFound == true) // If the previous check for errors returned any errors, need to start a new iteration of the while loop.
+                {
+                    Console.WriteLine($"Slot already played error was found. Press enter to try again.");
+                    Console.Read();
+                    break;
+                }
+
                 //If the three in a row patterns make "OOO" or "XXX" then that player has won
                 //Announce the winner, set timetoexit to true, and end the game
-                
+
                 //If CheckForWinner returns true - that means a winner was found
                 //Display the board and announce the winner
                 if (CheckForWinner(slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9))
