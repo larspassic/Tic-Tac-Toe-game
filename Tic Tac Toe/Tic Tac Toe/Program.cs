@@ -59,28 +59,34 @@ namespace Tic_Tac_Toe
                 //Ask the user to choose a number
                 Console.Write($"Player {currentPlayer}, please type a number to make your move (1-9): ");
 
-                //Receive the input from the user
+                //Declare the variables
                 int userInputInt = 0;
                 string userInputString = "";
-                userInputString = Console.ReadLine(); //Why is this not asking for input after a continue?!
-                
+
+                //Receive the input from the user
+                userInputString = Console.ReadLine();
+
                 //Need to protect this for string inputs
                 userInputInt = int.Parse(userInputString);
-                
-                bool errorFound = false;
 
                 //Need to build logic to protect the slot and clarify user input
                 //If user input is less than one or more than 9, it's invalid
                 //If the slot already contains X or O then need to ask for input again
-                //If the slot is not X or O, then proceed to the switch statement to actually make the move
-                
+                //If the slot is not already taken by X or O, then proceed to the switch statement to actually make the move
+
                 if (userInputInt < 1 || userInputInt > 9)
                 {
                     Console.WriteLine($"Invalid input. Please type a number that represents a game board slot (1-9)");
                     Console.WriteLine($"Input error was found. Press enter to try again.");
-                    Console.Read();
+                    //Console.Read(); //Using Console.Read as a means to pause the input so the user can read the error messages
+                    //Was causing my application to not work. Removing Console.Read helps!!
                     continue; //Break out of the while loop directly, start a new loop
                 }
+                
+                
+
+                bool errorFound = false;
+
 
                 //This switch statement will actually place the X or O in to the game board slot by stamping the current player
                 switch (userInputInt)
@@ -202,7 +208,7 @@ namespace Tic_Tac_Toe
                 if (errorFound == true) // If the previous check for errors returned any errors, need to start a new iteration of the while loop.
                 {
                     Console.WriteLine($"Slot already played error was found. Press enter to try again.");
-                    Console.Read();
+                    //Console.Read(); //THIS WAS CAUSING ISSUES
                     continue;
                 }
 
