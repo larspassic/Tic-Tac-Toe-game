@@ -31,7 +31,7 @@ namespace Tic_Tac_Toe
             slots[6] = slot7;
             slots[7] = slot8;
             slots[8] = slot9;
-            
+
             //Method to display the current game board out to the console
             void DisplayBoard()
             {
@@ -46,13 +46,14 @@ namespace Tic_Tac_Toe
             }
 
             //Welcome the players
+            //Unfortunately this currently never gets displayed.
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
 
             //Main game loop
             //Check to see if the game is over
             while (timeToExit == false)
             {
-                
+
                 //Display the board to the user
                 DisplayBoard();
 
@@ -82,8 +83,8 @@ namespace Tic_Tac_Toe
                     //Was causing my application to not work. Removing Console.Read helps!!
                     continue; //Break out of the while loop directly, start a new loop
                 }
-                
-                
+
+
 
                 bool errorFound = false;
 
@@ -103,7 +104,7 @@ namespace Tic_Tac_Toe
                             slot1 = currentPlayer;
                             break;
                         }
-                        
+
                     case 2:
                         if (slot2 == "X" || slot2 == "O") //If the slot already has X or O in it, that's an error
                         {
@@ -230,12 +231,28 @@ namespace Tic_Tac_Toe
 
                     //Announce the winner
                     Console.WriteLine($"Player {currentPlayer} has won!");
-                    
-                    //Wait for user interaction
-                    Console.ReadLine();
 
-                    //Break out of the game loop
-                    break;
+                    //Ask if the user wants to play again
+                    Console.WriteLine($"Would you like to play again? (Y / N):");
+                    string strUserInput = Console.ReadLine();
+
+                    if (strUserInput.ToLower() == "y")//If the user wants to play again
+                    {
+                        //Re-set variables for game board slots and current player
+                        slot1 = "1";
+                        slot2 = "2";
+                        slot3 = "3";
+                        slot4 = "4";
+                        slot5 = "5";
+                        slot6 = "6";
+                        slot7 = "7";
+                        slot8 = "8";
+                        slot9 = "9";
+                        timeToExit = false;
+                        currentPlayer = "X";
+                    }
+                    else { timeToExit = true; }
+
                 }
 
                 //End of the game loop, switch turns
@@ -249,9 +266,7 @@ namespace Tic_Tac_Toe
                 }
             }
 
-            //End the game by closing the console window
-            Console.WriteLine($"Game is finished!");
-            Environment.Exit(0);
+
 
         }
 
