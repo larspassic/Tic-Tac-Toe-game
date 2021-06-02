@@ -254,15 +254,18 @@ namespace Tic_Tac_Toe
                     else { timeToExit = true; }
 
                 }
+                else //End of the game loop, switch turns - only do this if there was no winner
+                {
 
-                //End of the game loop, switch turns
-                if (currentPlayer == "X")
-                {
-                    currentPlayer = "O";
-                }
-                else if (currentPlayer == "O")
-                {
-                    currentPlayer = "X";
+                    
+                    if (currentPlayer == "X")
+                    {
+                        currentPlayer = "O";
+                    }
+                    else if (currentPlayer == "O")
+                    {
+                        currentPlayer = "X";
+                    }
                 }
             }
 
