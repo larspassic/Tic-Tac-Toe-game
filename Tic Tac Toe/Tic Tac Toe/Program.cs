@@ -19,6 +19,7 @@ namespace Tic_Tac_Toe
             string slot9 = "9";
             bool timeToExit = false;
             string currentPlayer = "X";
+            bool catsGame = false;
 
             //Create a container array to hold the strings
             string[] slots = new string[9];
@@ -218,7 +219,7 @@ namespace Tic_Tac_Toe
 
                 //If CheckForWinner returns true - that means a winner was found
                 //Display the board and announce the winner
-                if (CheckForWinner(slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9))
+                if (CheckForWinner(slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slots, catsGame))
                 {
                     //Break out of the game loop
                     timeToExit = true;
@@ -254,6 +255,35 @@ namespace Tic_Tac_Toe
                     else { timeToExit = true; }
 
                 }
+                else if(catsGame == true)
+                {
+                    //Show the board one last time
+                    DisplayBoard();
+
+                    //Announce the winner
+                    Console.WriteLine($"Cat's game!");
+
+                    //Ask if the user wants to play again
+                    Console.WriteLine($"Would you like to play again? (Y / N):");
+                    string strUserInput = Console.ReadLine();
+
+                    if (strUserInput.ToLower() == "y")//If the user wants to play again
+                    {
+                        //Re-set variables for game board slots and current player
+                        slot1 = "1";
+                        slot2 = "2";
+                        slot3 = "3";
+                        slot4 = "4";
+                        slot5 = "5";
+                        slot6 = "6";
+                        slot7 = "7";
+                        slot8 = "8";
+                        slot9 = "9";
+                        timeToExit = false;
+                        currentPlayer = "X";
+                    }
+                    else { timeToExit = true; }
+                }
                 else //End of the game loop, switch turns - only do this if there was no winner
                 {
 
@@ -274,7 +304,7 @@ namespace Tic_Tac_Toe
         }
 
         //Method to check for a winner
-        private static bool CheckForWinner(string slot1, string slot2, string slot3, string slot4, string slot5, string slot6, string slot7, string slot8, string slot9)
+        private static bool CheckForWinner(string slot1, string slot2, string slot3, string slot4, string slot5, string slot6, string slot7, string slot8, string slot9, string[] slots, bool catsGame)
         {
             //Refresh the different victory patterns - these need to be refreshed prior to checking for a winner
             string topHorizontal = slot1 + slot2 + slot3;
@@ -286,11 +316,29 @@ namespace Tic_Tac_Toe
             string diagonalDown = slot1 + slot5 + slot9;
             string diagonalUp = slot7 + slot5 + slot3;
 
+
+            //Trying to build a check for a cat's game
+            
+            for (int i = 0; i < slots.Length; i++) //Loop through all items in the string array called slots
+            {
+                if (slots[i] != "X" || slots[i] != "O") //If we find ANY slots with numbers in them
+                {
+                    catsGame = false;
+                    break; // then break out of the cat's game check because it's not a cat's game yet
+                }
+                else
+                {
+                    catsGame = true;
+                }
+            }
+
             //Check for player O winning
             if (topHorizontal == "OOO" || middleHorizontal == "OOO" || bottomHorizontal == "OOO" || leftVertical == "OOO" || middleVertical == "OOO" || rightVertical == "OOO" || diagonalDown == "OOO" || diagonalUp == "OOO")
             {
                 return true;
             }
+
+
 
             //Check for player X winning
             if (topHorizontal == "XXX" || middleHorizontal == "XXX" || bottomHorizontal == "XXX" || leftVertical == "XXX" || middleVertical == "XXX" || rightVertical == "XXX" || diagonalDown == "XXX" || diagonalUp == "XXX")
