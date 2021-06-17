@@ -21,7 +21,7 @@ namespace Tic_Tac_Toe
             string currentPlayer = "X";
             bool catsGame = false;
 
-            //Create a container array to hold the strings
+            //Create a container array to hold the strings - this was added after
             string[] slots = new string[9];
             slots[0] = slot1;
             slots[1] = slot2;
@@ -210,7 +210,7 @@ namespace Tic_Tac_Toe
                 if (errorFound == true) // If the previous check for errors returned any errors, need to start a new iteration of the while loop.
                 {
                     Console.WriteLine($"Slot already played error was found. Press enter to try again.");
-                    //Console.Read(); //THIS WAS CAUSING ISSUES
+                    //Console.Read(); //THIS WAS CAUSING ISSUES - THE NEXT ITERATION OF THE LOOP WAS NOT WORKING CORRECTLY
                     continue;
                 }
 
